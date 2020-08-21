@@ -3,14 +3,14 @@ import { View, Text, StyleSheet } from "react-native";
 
 const SearchScreen = () => {
   return (
-    <View style={styles.searchScreen}>
+    <View style={styles.SearchScreen}>
       <Text>Search Screen!!!</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  searchScreen: {
+  SearchScreen: {
     top: 20,
   },
 });
