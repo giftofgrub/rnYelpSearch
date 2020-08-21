@@ -12,9 +12,7 @@ const SearchScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  SearchScreen: {
-    top: 20,
-  },
+  SearchScreen: {},
 });
 
 export default SearchScreen;
