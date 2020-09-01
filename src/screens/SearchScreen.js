@@ -28,7 +28,9 @@ const SearchScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  SearchScreen: {},
+  SearchScreen: {
+    // marginLeft: 30,
+  },
 });
 
 export default SearchScreen;
