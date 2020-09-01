@@ -1,7 +1,13 @@
 import React from "react";
 import RestoDetail from "components/RestoDetail";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-const RestosList = ({ title, restos }) => {
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+const RestosList = ({ title, restos, navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -11,7 +17,13 @@ const RestosList = ({ title, restos }) => {
         data={restos}
         keyExtractor={(resto) => resto.id}
         renderItem={({ item }) => {
-          return <RestoDetail resto={item} />;
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RestaurantShow")}
+            >
+              <RestoDetail resto={item} />
+            </TouchableOpacity>
+          );
         }}
       />
     </View>

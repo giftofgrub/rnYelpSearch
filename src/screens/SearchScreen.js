@@ -4,7 +4,7 @@ import SearchBar from "components/SearchBar";
 import RestosList from "components/RestosList";
 import useRestaurants from "hooks/useRestaurants";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
   const [searchApi, restaurants, errorMessage] = useRestaurants();
 
@@ -16,23 +16,34 @@ const SearchScreen = () => {
   };
 
   return (
-    <View style={styles.SearchScreen}>
+    <>
       <SearchBar term={term} onTermSubmit={searchApi} onTermChange={setTerm} />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {restaurants.length} results</Text>
       <ScrollView>
-        <RestosList restos={filterRestosByPrice("$")} title="Cost Effective" />
-        <RestosList restos={filterRestosByPrice("$$")} title="Just Right" />
-        <RestosList restos={filterRestosByPrice("$$$")} title="Big Spender" />
+        <RestosList
+          navigation={navigation}
+          restos={filterRestosByPrice("$")}
+          title="Cost Effective"
+        />
+        <RestosList
+          navigation={navigation}
+          restos={filterRestosByPrice("$$")}
+          title="Just Right"
+        />
+        <RestosList
+          navigation={navigation}
+          restos={filterRestosByPrice("$$$")}
+          title="Big Spender"
+        />
       </ScrollView>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  SearchScreen: {
-    // marginLeft: 30,
-  },
+  // SearchScreen: {
+  //   flex: 1,
+  // },
 });
 
 export default SearchScreen;
