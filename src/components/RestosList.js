@@ -7,7 +7,11 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-const RestosList = ({ title, restos, navigation }) => {
+import { useNavigation } from "@react-navigation/native";
+
+const RestosList = ({ title, restos }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>

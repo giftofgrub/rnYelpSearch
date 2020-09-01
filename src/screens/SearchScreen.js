@@ -4,7 +4,7 @@ import SearchBar from "components/SearchBar";
 import RestosList from "components/RestosList";
 import useRestaurants from "hooks/useRestaurants";
 
-const SearchScreen = ({ navigation }) => {
+const SearchScreen = ({}) => {
   const [term, setTerm] = useState("");
   const [searchApi, restaurants, errorMessage] = useRestaurants();
 
@@ -20,21 +20,9 @@ const SearchScreen = ({ navigation }) => {
       <SearchBar term={term} onTermSubmit={searchApi} onTermChange={setTerm} />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ScrollView>
-        <RestosList
-          navigation={navigation}
-          restos={filterRestosByPrice("$")}
-          title="Cost Effective"
-        />
-        <RestosList
-          navigation={navigation}
-          restos={filterRestosByPrice("$$")}
-          title="Just Right"
-        />
-        <RestosList
-          navigation={navigation}
-          restos={filterRestosByPrice("$$$")}
-          title="Big Spender"
-        />
+        <RestosList restos={filterRestosByPrice("$")} title="Cost Effective" />
+        <RestosList restos={filterRestosByPrice("$$")} title="Just Right" />
+        <RestosList restos={filterRestosByPrice("$$$")} title="Big Spender" />
       </ScrollView>
     </>
   );
