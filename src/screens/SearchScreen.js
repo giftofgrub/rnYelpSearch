@@ -17,7 +17,11 @@ const SearchScreen = ({}) => {
 
   return (
     <>
-      <SearchBar term={term} onTermSubmit={searchApi} onTermChange={setTerm} />
+      <SearchBar
+        term={term}
+        onTermSubmit={() => searchApi(term)}
+        onTermChange={setTerm}
+      />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ScrollView>
         <RestosList restos={filterRestosByPrice("$")} title="Cost Effective" />

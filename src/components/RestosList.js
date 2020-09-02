@@ -12,6 +12,10 @@ import { useNavigation } from "@react-navigation/native";
 const RestosList = ({ title, restos }) => {
   const navigation = useNavigation();
 
+  if (!restos.length) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -23,7 +27,9 @@ const RestosList = ({ title, restos }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate("RestaurantShow")}
+              onPress={() =>
+                navigation.navigate("RestaurantShow", { id: item.id })
+              }
             >
               <RestoDetail resto={item} />
             </TouchableOpacity>
